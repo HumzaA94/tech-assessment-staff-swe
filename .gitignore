@@ -141,3 +141,13 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# IDE files
+.idea/
+.vscode/
+.DS_Store/
+.cursor/
+
+# venv & caching files
+venv/
+__pycache__/
