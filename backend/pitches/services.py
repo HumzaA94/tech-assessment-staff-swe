@@ -80,7 +80,7 @@ def build_pitch_query(
     stmt = select(pitches)
 
     if player_id is not None:
-        pid = _player_id_value(player_id)
+        pid = str(player_id)
         stmt = stmt.where(or_(pitches.c.pitcher == pid, pitches.c.batter == pid))
     if pitcher_id is not None:
         stmt = stmt.where(pitches.c.pitcher == str(pitcher_id))
