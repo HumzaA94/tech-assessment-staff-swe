@@ -3,7 +3,7 @@ from sqlalchemy import Float, MetaData, Table, cast, func, or_, select, text
 
 from config import db
 from pitches.constants import HIDDEN_PITCH_COLUMNS, PITCH_COLUMN_PRIORITY
-from players.service import format_player_name, load_players_by_ids
+from players.services import format_player_name, load_players_by_ids
 from utils.pagination import paginate_select
 
 _pitches_table = None

@@ -1,7 +1,7 @@
 """Routes for the pitches module."""
 from flask import Blueprint, jsonify, request
 
-from pitches import service
+from pitches import services as service
 from utils.pagination import parse_limit, parse_page
 
 pitches_bp = Blueprint("pitches", __name__, url_prefix="/pitches")

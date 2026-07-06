@@ -1,7 +1,7 @@
 """ Routes for the players module."""
 from flask import Blueprint, jsonify, request
 
-from players import service
+from players import services as service
 from utils.pagination import parse_limit, parse_page
 
 players_bp = Blueprint("players", __name__, url_prefix="/players")

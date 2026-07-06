@@ -2,7 +2,7 @@
 from sqlalchemy import func, or_
 
 from config import db
-from models import Player
+from models.players import Player
 from schemas import PlayerSchema
 from utils.pagination import paginate
 
