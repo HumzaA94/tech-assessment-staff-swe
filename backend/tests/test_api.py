@@ -1,8 +1,12 @@
+"""Test the API endpoints."""
 import pytest
 import os
 import sys
 
-from main import app, db, Player, Pitch
+from config import db
+from models.players import Player
+from models.pitches import Pitch
+from main import app
 
 
 @pytest.fixture
@@ -11,10 +15,6 @@ def client():
 
     # Point to the actual baseball database for now
     app.config["TESTING"] = True
-    baseball_db_path = os.path.join(
-        os.path.dirname(__file__), "..", "data", "baseball.db"
-    )
-    app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{baseball_db_path}"
 
     with app.test_client() as client:
         with app.app_context():
