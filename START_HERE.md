@@ -1,6 +1,6 @@
 # Houston Astros Software Engineering Technical Assessment
 
-Thank you for your interest in the Software Engineer position with the Astros R&D team! This technical assessment is designed to gauge your engineering approach, coding style, and understanding of modern development practices. **Please point this local copy of the repo to Git before making any changes and submit your solutions and responses via a GitHub link (or similar alternative).** The link you share can be publicly available. 
+Thank you for your interest in the Software Engineer position with the Astros R&D team! This technical assessment is designed to gauge your engineering approach, coding style, and understanding of modern development practices. **Please point this local copy of the repo to Git before making any changes and submit your solutions and responses via a GitHub link (or similar alternative).** The link you share can be publicly available.
 
 ---
 
@@ -25,7 +25,7 @@ The application should enable a user to answer questions including but not limit
 - What players were on 'x' team?
 
 The project leverages the following technology:
-- **Backend**: Flask 
+- **Backend**: Flask
 - **Frontend**: React.js (Typescript preferred, but Javascript is fine).
 - **Database**: SQLite
 
