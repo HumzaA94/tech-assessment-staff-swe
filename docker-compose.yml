@@ -21,7 +21,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - VITE_API_URL=http://localhost:5001/
+      - VITE_API_URL=http://localhost:5001
     volumes:
       # 1. Mount entire monorepo for editing
       - .:/workspace:cached

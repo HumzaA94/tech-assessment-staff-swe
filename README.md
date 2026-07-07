@@ -36,7 +36,8 @@ A full-stack web application for exploring and visualizing baseball player stati
 │   │   └── App.test.tsx     # Component tests
 │   ├── package.json
 │   ├── tsconfig.json
-├── QUESIONS.md              # Development practices questions
+├── QUESTIONS.md             # Development practices questions
+├── SUBMISSIONS.md           # Submission notes and thought process
 ├── .gitignore               # Git ignore patterns
 ├── START_HERE.md            # Assessment introduction
 └── README.md                # This file
@@ -143,7 +144,7 @@ cd frontend
 npm install
 
 # Start the development server
-npm start
+npm run dev
 ```
 
 Frontend will be available at: http://localhost:3000
@@ -167,13 +168,13 @@ npm test # if using the dev container this will be 'bun test' instead
 
 ## Features
 
-Update this README to note the features you completed as a part of your submission. If you would like to explain your thought process or progress further, feel free to include an additional markdown file.
+See [SUBMISSIONS.md](./SUBMISSIONS.md) for approach, trade-offs, and thought process.
 
 ### Completed
 
-- [ ] REST API for player and pitch data access
-- [ ] Player and pitch data table with filtering
-- [ ] Unit/integration tests
+- [x] REST API for player and pitch data access
+- [x] Player and pitch data table with filtering
+- [x] Unit/integration tests
 
 ## Database
 
@@ -233,9 +234,9 @@ Pitch data from 2025 postseason MLB games. Key fields include:
 In the backend, the db models and schemas are already implemented for you. You may edit them as you see fit.
 The pitches model and schema only include a subset of all the fields from the pitches table, you are free to add more if wanted.
 
-**Schemas:** Marshmallow schemas for both tables are already implemented in `backend/app/schemas.py`.
+**Schemas:** Marshmallow schemas for both tables are implemented in `backend/schemas.py`.
 
-**Models:** SqlAlchemy models are created in `backend/app/main.py`.
+**Models:** SQLAlchemy models are defined in `backend/models/`.
 
 ## Frontend
 

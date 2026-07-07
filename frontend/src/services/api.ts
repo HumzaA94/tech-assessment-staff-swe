@@ -1,31 +1,85 @@
 import axios from "axios";
-import { Player, PlayerFilterOptions } from "../types";
-
-const API_BASE_URL = import.meta.env.VITE_API_URL || "/";
+import {
+  PitchFilterOptions,
+  PitchListResponse,
+  PaginationParams,
+  Player,
+  PlayerFilterOptions,
+  PlayerListResponse,
+  PlayerMetadata,
+  PlayerOption,
+} from "../types";
 
 const api = axios.create({
-  baseURL: API_BASE_URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
+  baseURL: import.meta.env.VITE_API_URL ?? "http://localhost:5001",
 });
 
 export class ApiService {
-  /**
-   * Get all players or filter by team/position
-   */
-  static async getPlayers(filters?: PlayerFilterOptions): Promise<Player[]> {
-    // TODO: Implement player retrieval with optional filtering
-    throw new Error("getPlayers not implemented");
+  static async getPlayers(
+    filters?: PlayerFilterOptions,
+    pagination?: PaginationParams
+  ): Promise<PlayerListResponse> {
+    const { data } = await api.get<PlayerListResponse>("/players", {
+      params: {
+        team: filters?.team,
+        position: filters?.position,
+        page: pagination?.page,
+        limit: pagination?.limit,
+      },
+      paramsSerializer: {
+        indexes: null,
+      },
+    });
+    return data;
   }
 
-  // TODO: add additional endpoint calls as needed.
+  static async getPlayerMetadata(): Promise<PlayerMetadata> {
+    const { data } = await api.get<PlayerMetadata>("/players/meta");
+    return data;
+  }
 
-  /**
-   * Health check endpoint
-   */
+  static async getPlayerOptions(
+    search = "",
+    limit = 25
+  ): Promise<PlayerOption[]> {
+    const { data } = await api.get<{ options: PlayerOption[] }>(
+      "/players/options",
+      { params: { search, limit } }
+    );
+    return data.options;
+  }
+
+  static async getPlayer(playerId: number): Promise<Player> {
+    const { data } = await api.get<Player>(`/players/${playerId}`);
+    return data;
+  }
+
+  static async getPitches(
+    filters?: PitchFilterOptions,
+    pagination?: PaginationParams
+  ): Promise<PitchListResponse> {
+    const { data } = await api.get<PitchListResponse>("/pitches", {
+      params: {
+        ...filters,
+        page: pagination?.page,
+        limit: pagination?.limit,
+      },
+    });
+    return data;
+  }
+
+  static async getPitchCount(
+    filters?: PitchFilterOptions
+  ): Promise<{ total: number }> {
+    const { data } = await api.get<{ total: number }>("/pitches/count", {
+      params: filters,
+    });
+    return data;
+  }
+
   static async healthCheck(): Promise<{ status: string }> {
-    return api.get("/health");
+    const { data } = await api.get<{ status: string }>("/health");
+    return data;
   }
 }
 
